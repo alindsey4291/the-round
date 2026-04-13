@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — The Round</title>
+  <meta name="description" content="Choose your tier and join The Round." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+    :root{--cream:#F7F4EE;--cream-dark:#EDE8DC;--clay:#C4A882;--clay-dark:#9E7F58;--ink:#1C1A16;--ink-soft:#3D3A33;--ink-muted:#7A7469;--sage:#6B7B6A;--sage-light:#E8EDE7;--ember:#B5522A;--gold:#C8A84B;--white:#FFFFFF;--font-display:'Cormorant Garamond',Georgia,serif;--font-body:'Jost',sans-serif;}
+    html{scroll-behavior:smooth;}
+    body{font-family:var(--font-body);background:var(--cream);color:var(--ink);font-weight:300;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+    nav{position:sticky;top:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1rem 4rem;background:rgba(247,244,238,0.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(196,168,130,0.2);}
+    .nav-logo{text-decoration:none;display:flex;flex-direction:column;line-height:1;}
+    .nav-logo-the{font-family:var(--font-body);font-size:0.48rem;font-weight:300;letter-spacing:0.42em;color:var(--ink-muted);text-transform:uppercase;}
+    .nav-logo-round{font-family:var(--font-display);font-size:1.25rem;font-weight:300;letter-spacing:0.12em;color:var(--ink);text-transform:uppercase;line-height:1;}
+    .nav-logo-rule{height:1px;background:var(--clay);width:100%;margin:2px 0;}
+    .nav-logo-sub{font-family:var(--font-body);font-size:0.38rem;font-weight:300;letter-spacing:0.2em;color:var(--clay);text-transform:uppercase;}
+    .nav-links{display:flex;align-items:center;gap:2.25rem;list-style:none;}
+    .nav-links a{font-size:0.72rem;letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-muted);text-decoration:none;transition:color 0.2s;}
+    .nav-links a:hover{color:var(--ink);}
+    .hamburger{display:none;flex-direction:column;gap:4px;cursor:pointer;background:none;border:none;padding:4px;}
+    .hamburger span{width:22px;height:1.5px;background:var(--ink);transition:0.3s;}
+
+    .page-hero{background:var(--ink);padding:5rem 4rem;text-align:center;}
+    .page-hero h1{font-family:var(--font-display);font-size:3rem;font-weight:300;color:var(--cream);margin-bottom:0.8rem;}
+    .page-hero p{font-size:1rem;color:var(--ink-muted);max-width:560px;margin:0 auto;}
+    .section-tag{font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--clay);margin-bottom:1rem;}
+
+    .section{padding:5rem 4rem;}
+    .checkout-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;max-width:1100px;margin:0 auto;}
+    .checkout-card{background:var(--white);border:1px solid rgba(196,168,130,0.2);padding:2.5rem 2rem;text-align:center;transition:transform 0.2s,box-shadow 0.2s;}
+    .checkout-card:hover{transform:translateY(-4px);box-shadow:0 8px 30px rgba(28,26,22,0.08);}
+    .checkout-card h3{font-family:var(--font-body);font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--clay);margin-bottom:0.5rem;}
+    .checkout-card .price{font-family:var(--font-display);font-size:2.4rem;font-weight:300;margin-bottom:0.3rem;}
+    .checkout-card .price span{font-size:0.9rem;color:var(--ink-muted);}
+    .checkout-card .tagline{font-size:0.85rem;color:var(--ink-muted);margin-bottom:1.5rem;}
+    .checkout-btn{display:block;font-family:var(--font-body);font-size:0.7rem;letter-spacing:0.15em;text-transform:uppercase;padding:0.9rem 1.5rem;text-decoration:none;transition:0.3s;background:var(--ink);color:var(--cream);}
+    .checkout-btn:hover{background:var(--ink-soft);}
+    .checkout-note{text-align:center;margin-top:2rem;font-size:0.82rem;color:var(--ink-muted);}
+
+    .book-checkout{max-width:480px;margin:0 auto;text-align:center;padding:3rem;background:var(--white);border:1px solid rgba(196,168,130,0.2);}
+    .book-checkout h3{font-family:var(--font-display);font-size:1.5rem;font-weight:300;margin-bottom:0.8rem;}
+    .book-checkout p{font-size:0.88rem;color:var(--ink-muted);margin-bottom:1.5rem;}
+
+    footer{background:var(--ink);border-top:1px solid rgba(196,168,130,0.1);padding:3rem 4rem 2rem;}
+    .footer-grid{display:grid;grid-template-columns:1.5fr repeat(3,1fr);gap:3rem;max-width:1100px;margin:0 auto 2rem;}
+    .footer-brand p{color:var(--ink-muted);font-size:0.82rem;margin-top:1rem;max-width:260px;}
+    .footer-brand .nav-logo-round{color:var(--cream);} .footer-brand .nav-logo-the,.footer-brand .nav-logo-sub{color:var(--ink-muted);}
+    .footer-col h4{font-family:var(--font-body);font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--clay);margin-bottom:1rem;}
+    .footer-col a{display:block;font-size:0.82rem;color:var(--ink-muted);text-decoration:none;padding:0.3rem 0;transition:color 0.2s;}
+    .footer-col a:hover{color:var(--cream);}
+    .footer-bottom{text-align:center;padding-top:2rem;border-top:1px solid rgba(196,168,130,0.1);color:var(--ink-muted);font-size:0.72rem;}
+
+    @media(max-width:900px){
+      nav{padding:1rem 1.5rem;}
+      .nav-links{display:none;flex-direction:column;position:absolute;top:100%;left:0;right:0;background:var(--cream);padding:1.5rem;gap:1.2rem;border-bottom:1px solid rgba(196,168,130,0.2);}
+      .nav-links.open{display:flex;} .hamburger{display:flex;}
+      .page-hero{padding:3.5rem 1.5rem;} .page-hero h1{font-size:2.2rem;}
+      .section{padding:3.5rem 1.5rem;}
+      .checkout-grid{grid-template-columns:1fr;max-width:420px;margin-left:auto;margin-right:auto;}
+      .footer-grid{grid-template-columns:1fr 1fr;}
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo"><span class="nav-logo-the">The</span><span class="nav-logo-round">ROUND</span><span class="nav-logo-rule"></span><span class="nav-logo-sub">C.O.R.E Think</span></a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu"><span></span><span></span><span></span></button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="pillars.html">Pillars</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="stewardship.html">Stewardship</a></li>
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <p class="section-tag" style="color:var(--clay);">Join The Round</p>
+  <h1>Checkout</h1>
+  <p>Choose your tier to get started. All memberships include the Daily 10 prompts and monthly focus plans.</p>
+</section>
+
+<section class="section">
+  <div class="checkout-grid">
+
+    <div class="checkout-card">
+      <h3>C.O.R.E Companion</h3>
+      <div class="price">$19<span>/month</span></div>
+      <div class="tagline">Practice + prompts</div>
+      <!-- Replace # with your Square link -->
+      <a href="#" class="checkout-btn" target="_blank" rel="noopener">Subscribe — $19/mo</a>
+    </div>
+
+    <div class="checkout-card">
+      <h3>Ember Companion</h3>
+      <div class="price">$49<span>/month</span></div>
+      <div class="tagline">Practice + people</div>
+      <!-- Replace # with your Square link -->
+      <a href="#" class="checkout-btn" target="_blank" rel="noopener">Subscribe — $49/mo</a>
+    </div>
+
+    <div class="checkout-card">
+      <h3>Diamond Companion</h3>
+      <div class="price">$129<span>/month</span></div>
+      <div class="tagline">Practice + guided transformation</div>
+      <!-- Replace # with your Square link -->
+      <a href="#" class="checkout-btn" target="_blank" rel="noopener">Subscribe — $129/mo</a>
+    </div>
+
+    <div class="checkout-card">
+      <h3>Stewardship</h3>
+      <div class="price">$299<span>/month</span></div>
+      <div class="tagline">Practice + leadership + licensing</div>
+      <a href="https://square.link/u/5hmPSovK" class="checkout-btn" target="_blank" rel="noopener">Apply — $299/mo</a>
+    </div>
+
+    <div class="checkout-card">
+      <h3>Eclipse</h3>
+      <div class="price">$999<span>/month</span></div>
+      <div class="tagline">Practice + patron impact</div>
+      <!-- Replace # with your Square link -->
+      <a href="#" class="checkout-btn" target="_blank" rel="noopener">Become a Patron — $999/mo</a>
+    </div>
+
+    <div class="checkout-card">
+      <h3>The Book</h3>
+      <div class="price" style="font-size:1.6rem;">Nothing Is Final</div>
+      <div class="tagline">By A.L. Lindsey</div>
+      <a href="https://square.link/u/oJ6zjogh" class="checkout-btn" target="_blank" rel="noopener">Buy the Book</a>
+    </div>
+
+  </div>
+  <p class="checkout-note">Need help choosing? <a href="membership.html" style="color:var(--clay-dark);text-decoration:underline;">Compare all tiers →</a></p>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand"><div class="nav-logo" style="pointer-events:none;"><span class="nav-logo-the">The</span><span class="nav-logo-round">ROUND</span><span class="nav-logo-rule"></span><span class="nav-logo-sub">C.O.R.E Think</span></div><p>A practice-based community built on Compassion, Open Faith, Reverence, and Empathy.</p></div>
+    <div class="footer-col"><h4>Community</h4><a href="index.html#about">About</a><a href="pillars.html">Pillars</a><a href="membership.html">Membership</a><a href="contact.html">Contact</a></div>
+    <div class="footer-col"><h4>Leadership</h4><a href="stewardship.html">Stewardship</a><a href="book.html">The Book</a></div>
+    <div class="footer-col"><h4>Start Here</h4><a href="membership.html">Join The Round</a><a href="https://square.link/u/oJ6zjogh" target="_blank" rel="noopener">Get the Book</a></div>
+  </div>
+  <div class="footer-bottom">&copy; 2025 The Round — C.O.R.E Think Community. All rights reserved.</div>
+</footer>
+
+</body>
+</html>
