@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Membership — The Round</title>
+  <meta name="description" content="Join The Round as a C.O.R.E Companion. Five tiers from practice + prompts to patron impact." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4EE; --cream-dark: #EDE8DC; --clay: #C4A882; --clay-dark: #9E7F58;
+      --ink: #1C1A16; --ink-soft: #3D3A33; --ink-muted: #7A7469; --sage: #6B7B6A;
+      --sage-light: #E8EDE7; --ember: #B5522A; --gold: #C8A84B; --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--ink); font-weight: 300; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 4rem; background: rgba(247,244,238,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(196,168,130,0.2); }
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-the { font-family: var(--font-body); font-size: 0.48rem; font-weight: 300; letter-spacing: 0.42em; color: var(--ink-muted); text-transform: uppercase; }
+    .nav-logo-round { font-family: var(--font-display); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-transform: uppercase; line-height: 1; }
+    .nav-logo-rule { height: 1px; background: var(--clay); width: 100%; margin: 2px 0; }
+    .nav-logo-sub { font-family: var(--font-body); font-size: 0.38rem; font-weight: 300; letter-spacing: 0.2em; color: var(--clay); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-links a.active { color: var(--ink); }
+    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 22px; height: 1.5px; background: var(--ink); transition: 0.3s; }
+
+    .page-hero { background: var(--ink); padding: 5rem 4rem; text-align: center; }
+    .page-hero h1 { font-family: var(--font-display); font-size: 3rem; font-weight: 300; color: var(--cream); margin-bottom: 0.8rem; }
+    .page-hero p { font-size: 1rem; color: var(--ink-muted); max-width: 560px; margin: 0 auto; }
+    .section-tag { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
+
+    .section { padding: 5rem 4rem; }
+
+    /* TIER CARDS */
+    .tiers-container { max-width: 1200px; margin: 0 auto; }
+    .tiers-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-bottom: 1.5rem; }
+    .tiers-row-2 { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 780px; margin: 0 auto; }
+    .tier-card { background: var(--white); border: 1px solid rgba(196,168,130,0.2); padding: 2.5rem 2rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(28,26,22,0.08); }
+    .tier-card.featured { border-color: var(--clay); border-width: 2px; }
+    .tier-badge { display: inline-block; font-size: 0.55rem; letter-spacing: 0.15em; text-transform: uppercase; background: var(--clay); color: var(--white); padding: 0.25rem 0.8rem; margin-bottom: 1rem; align-self: flex-start; }
+    .tier-name { font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.5rem; }
+    .tier-price { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--ink); margin-bottom: 0.3rem; }
+    .tier-price span { font-size: 0.9rem; color: var(--ink-muted); }
+    .tier-tagline { font-size: 0.88rem; color: var(--ink-muted); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(196,168,130,0.15); }
+    .tier-desc { font-size: 0.88rem; color: var(--ink-soft); margin-bottom: 1.5rem; line-height: 1.7; }
+    .tier-features { list-style: none; flex: 1; margin-bottom: 2rem; }
+    .tier-features li { font-size: 0.85rem; color: var(--ink-soft); padding: 0.4rem 0; padding-left: 1.3rem; position: relative; }
+    .tier-features li::before { content: "✓"; position: absolute; left: 0; color: var(--sage); font-size: 0.8rem; }
+    .tier-btn { display: block; text-align: center; font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.9rem 1.5rem; text-decoration: none; transition: 0.3s; }
+    .tier-btn-dark { background: var(--ink); color: var(--cream); }
+    .tier-btn-dark:hover { background: var(--ink-soft); }
+    .tier-btn-outline { border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+    .tier-btn-outline:hover { background: var(--ink); color: var(--cream); }
+    .tier-btn-clay { background: var(--clay); color: var(--white); }
+    .tier-btn-clay:hover { background: var(--clay-dark); }
+
+    /* COMPARISON TABLE */
+    .comparison { max-width: 1100px; margin: 0 auto; overflow-x: auto; }
+    .comparison h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; text-align: center; margin-bottom: 2rem; }
+    .comparison table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+    .comparison th { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); padding: 1rem 0.8rem; text-align: center; border-bottom: 2px solid var(--clay); }
+    .comparison th:first-child { text-align: left; }
+    .comparison td { padding: 0.7rem 0.8rem; border-bottom: 1px solid rgba(196,168,130,0.12); text-align: center; color: var(--ink-soft); }
+    .comparison td:first-child { text-align: left; font-size: 0.82rem; }
+    .comparison .check { color: var(--sage); }
+    .comparison .dash { color: var(--ink-muted); opacity: 0.3; }
+
+    /* FAQ */
+    .faq { max-width: 700px; margin: 0 auto; }
+    .faq h2 { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; text-align: center; margin-bottom: 2rem; }
+    .faq-item { border-bottom: 1px solid rgba(196,168,130,0.15); padding: 1.5rem 0; }
+    .faq-q { font-weight: 400; font-size: 0.95rem; color: var(--ink); margin-bottom: 0.5rem; }
+    .faq-a { font-size: 0.88rem; color: var(--ink-soft); }
+
+    .cta-strip { background: var(--ink); padding: 5rem 4rem; text-align: center; }
+    .cta-strip h2 { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
+    .cta-strip p { color: var(--ink-muted); margin-bottom: 2rem; }
+    .cta-strip a { display: inline-block; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--clay); color: var(--ink); text-decoration: none; transition: background 0.3s; }
+    .cta-strip a:hover { background: var(--clay-dark); }
+
+    footer { background: var(--ink); border-top: 1px solid rgba(196,168,130,0.1); padding: 3rem 4rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 3rem; max-width: 1100px; margin: 0 auto 2rem; }
+    .footer-brand p { color: var(--ink-muted); font-size: 0.82rem; margin-top: 1rem; max-width: 260px; }
+    .footer-brand .nav-logo-round { color: var(--cream); }
+    .footer-brand .nav-logo-the, .footer-brand .nav-logo-sub { color: var(--ink-muted); }
+    .footer-col h4 { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 0.3rem 0; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(196,168,130,0.1); color: var(--ink-muted); font-size: 0.72rem; }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); padding: 1.5rem; gap: 1.2rem; border-bottom: 1px solid rgba(196,168,130,0.2); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .page-hero { padding: 3.5rem 1.5rem; }
+      .page-hero h1 { font-size: 2.2rem; }
+      .section { padding: 3.5rem 1.5rem; }
+      .tiers-row, .tiers-row-2 { grid-template-columns: 1fr; max-width: 420px; margin-left: auto; margin-right: auto; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-the">The</span>
+    <span class="nav-logo-round">ROUND</span>
+    <span class="nav-logo-rule"></span>
+    <span class="nav-logo-sub">C.O.R.E Think</span>
+  </a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="pillars.html">Pillars</a></li>
+    <li><a href="membership.html" class="active">Membership</a></li>
+    <li><a href="stewardship.html">Stewardship</a></li>
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<section class="page-hero">
+  <p class="section-tag" style="color:var(--clay);">Become a Companion</p>
+  <h1>Membership</h1>
+  <p>Choose the path that fits where you are. Every tier includes the Daily 10 prompts, weekly guides, and monthly focus plans.</p>
+</section>
+
+<!-- TIER CARDS -->
+<section class="section">
+  <div class="tiers-container">
+    <div class="tiers-row">
+
+      <!-- COMPANION -->
+      <div class="tier-card">
+        <div class="tier-name">C.O.R.E Companion</div>
+        <div class="tier-price">$19<span>/month</span></div>
+        <div class="tier-tagline">Practice + prompts</div>
+        <p class="tier-desc">Perfect for starting. You'll get daily prompts, weekly guides, and monthly focus plans that turn spiritual growth into repeatable habits.</p>
+        <ul class="tier-features">
+          <li>Daily 10 prompts (Compassion · Open Faith · Reverence · Empathy)</li>
+          <li>Weekly Revision Ritual guide + templates</li>
+          <li>Monthly 30-Day Focus plans + tracking</li>
+          <li>C.O.R.E Baseline measurement (weekly)</li>
+          <li>Resource library (readings + worksheets)</li>
+          <li>"Future Is Listening" daily prompt</li>
+          <li>Early access + pilot programs</li>
+        </ul>
+        <!-- Replace # with your Square link for this tier -->
+        <a href="#" class="tier-btn tier-btn-outline">Join — $19/month</a>
+      </div>
+
+      <!-- EMBER -->
+      <div class="tier-card featured">
+        <span class="tier-badge">Most Popular</span>
+        <div class="tier-name">Ember Companion</div>
+        <div class="tier-price">$49<span>/month</span></div>
+        <div class="tier-tagline">Practice + people</div>
+        <p class="tier-desc">For Companions who want community. Includes Circle access with trained facilitation so you practice with others — not alone.</p>
+        <ul class="tier-features">
+          <li>Everything in Companion</li>
+          <li>Circle access (weekly small group)</li>
+          <li>Facilitated Circle (trained C.O.R.E Steward)</li>
+          <li>Live monthly teaching + Q&A</li>
+        </ul>
+        <!-- Replace # with your Square link for this tier -->
+        <a href="#" class="tier-btn tier-btn-dark">Join — $49/month</a>
+      </div>
+
+      <!-- DIAMOND -->
+      <div class="tier-card">
+        <div class="tier-name">Diamond Companion</div>
+        <div class="tier-price">$129<span>/month</span></div>
+        <div class="tier-tagline">Practice + guided transformation</div>
+        <p class="tier-desc">For Companions ready for deeper change. Adds guided sessions, priority support, and a transformation track built around evidence.</p>
+        <ul class="tier-features">
+          <li>Everything in Ember</li>
+          <li>Guided transformation track (coaching / deep sessions)</li>
+          <li>1:1 mentor call (monthly)</li>
+          <li>Priority support (email/DM response window)</li>
+        </ul>
+        <!-- Replace # with your Square link for this tier -->
+        <a href="#" class="tier-btn tier-btn-outline">Join — $129/month</a>
+      </div>
+    </div>
+
+    <div class="tiers-row-2">
+
+      <!-- STEWARDSHIP -->
+      <div class="tier-card">
+        <div class="tier-name">Stewardship</div>
+        <div class="tier-price">$299<span>/month</span></div>
+        <div class="tier-tagline">Practice + leadership + licensing</div>
+        <p class="tier-desc">For leaders. Includes certification, Council support, and licensing rights to run official Circles within The Round.</p>
+        <ul class="tier-features">
+          <li>Everything in Diamond</li>
+          <li>Steward certification curriculum</li>
+          <li>Steward Council (peer supervision + ongoing training)</li>
+          <li>Circle kit license (script + agreements + brand kit)</li>
+          <li>Circle licensing rights (run official Circles)</li>
+        </ul>
+        <a href="https://square.link/u/5hmPSovK" class="tier-btn tier-btn-dark" target="_blank" rel="noopener">Apply — $299/month</a>
+      </div>
+
+      <!-- ECLIPSE -->
+      <div class="tier-card">
+        <div class="tier-name">Eclipse</div>
+        <div class="tier-price">$999<span>/month</span></div>
+        <div class="tier-tagline">Practice + patron impact</div>
+        <p class="tier-desc">For patrons who fund scholarships and expansion. Includes impact briefings, early access, and pilot invitations.</p>
+        <ul class="tier-features">
+          <li>Daily 10 prompts + all solo resources</li>
+          <li>Eclipse impact briefings (quarterly)</li>
+          <li>Scholarship sponsorship (your membership funds others)</li>
+          <li>Early access + pilot programs</li>
+        </ul>
+        <!-- Replace # with your Square link for this tier -->
+        <a href="#" class="tier-btn tier-btn-clay">Become a Patron — $999/month</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARISON TABLE -->
+<section class="section" style="background: var(--sage-light);">
+  <div class="comparison">
+    <h2>At-a-glance comparison</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>What's Included</th>
+          <th>Companion<br>$19/mo</th>
+          <th>Ember<br>$49/mo</th>
+          <th>Diamond<br>$129/mo</th>
+          <th>Stewardship<br>$299/mo</th>
+          <th>Eclipse<br>$999/mo</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Daily 10 prompts (C.O.R.E)</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Weekly Revision Ritual guide</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Monthly 30-Day Focus plans</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>C.O.R.E Baseline (weekly)</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Resource library</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+        <tr><td>Circle access (weekly small group)</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Facilitated Circle (trained Steward)</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Live monthly teaching + Q&A</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Guided transformation track</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>1:1 mentor call (monthly)</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Priority support</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Steward certification</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Circle licensing rights</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td><td class="dash">—</td></tr>
+        <tr><td>Eclipse impact briefings</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td></tr>
+        <tr><td>Scholarship sponsorship</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="dash">—</td><td class="check">✓</td></tr>
+        <tr><td>Early access + pilot programs</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="section">
+  <div class="faq">
+    <h2>Common Questions</h2>
+    <div class="faq-item">
+      <p class="faq-q">Is The Round a church?</p>
+      <p class="faq-a">No. The Round is a practice-based spiritual community with Open Faith — meaning people of all beliefs (or no belief) are welcome. We never pressure belief or hide it.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Is this therapy?</p>
+      <p class="faq-a">No. Circles are not clinical treatment. If you need professional mental health support, we encourage you to seek it. C.O.R.E is structured practice with trained facilitation — not therapy.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">Can I change tiers later?</p>
+      <p class="faq-a">Yes. You can move between tiers at any time. Start where you are.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What is a Circle?</p>
+      <p class="faq-a">A Circle is a weekly small group (6–10 people) led by a trained C.O.R.E Steward. It follows a simple ritual: arrive, ground, share, revise, commit, close. Available at Ember tier and above.</p>
+    </div>
+    <div class="faq-item">
+      <p class="faq-q">What is a Steward?</p>
+      <p class="faq-a">A C.O.R.E Steward is a certified facilitator who leads Circles within The Round. Stewards complete an 8-module training and are supported by the Steward Council.</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta-strip">
+  <h2>Start where you are</h2>
+  <p>Grow through practice, not perfection.</p>
+  <a href="#" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">Choose Your Tier</a>
+</section>
+
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="pointer-events:none;">
+        <span class="nav-logo-the">The</span>
+        <span class="nav-logo-round">ROUND</span>
+        <span class="nav-logo-rule"></span>
+        <span class="nav-logo-sub">C.O.R.E Think</span>
+      </div>
+      <p>A practice-based community built on Compassion, Open Faith, Reverence, and Empathy.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="index.html#about">About</a>
+      <a href="pillars.html">Pillars</a>
+      <a href="membership.html">Membership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Leadership</h4>
+      <a href="stewardship.html">Stewardship</a>
+      <a href="book.html">The Book</a>
+    </div>
+    <div class="footer-col">
+      <h4>Start Here</h4>
+      <a href="membership.html">Join The Round</a>
+      <a href="https://square.link/u/oJ6zjogh" target="_blank" rel="noopener">Get the Book</a>
+    </div>
+  </div>
+  <div class="footer-bottom">&copy; 2025 The Round — C.O.R.E Think Community. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

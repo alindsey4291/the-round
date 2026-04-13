@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Round — C.O.R.E Think Community</title>
+  <meta name="description" content="A practice-based community built on Compassion, Open Faith, Reverence, and Empathy. Join C.O.R.E Companions and grow through evidence, not perfection." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4EE; --cream-dark: #EDE8DC; --clay: #C4A882; --clay-dark: #9E7F58;
+      --ink: #1C1A16; --ink-soft: #3D3A33; --ink-muted: #7A7469; --sage: #6B7B6A;
+      --sage-light: #E8EDE7; --ember: #B5522A; --gold: #C8A84B; --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--ink); font-weight: 300; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+
+    /* NAV */
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1rem 4rem; background: rgba(247,244,238,0.97); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(196,168,130,0.2); }
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-the { font-family: var(--font-body); font-size: 0.48rem; font-weight: 300; letter-spacing: 0.42em; color: var(--ink-muted); text-transform: uppercase; }
+    .nav-logo-round { font-family: var(--font-display); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-transform: uppercase; line-height: 1; }
+    .nav-logo-rule { height: 1px; background: var(--clay); width: 100%; margin: 2px 0; }
+    .nav-logo-sub { font-family: var(--font-body); font-size: 0.38rem; font-weight: 300; letter-spacing: 0.2em; color: var(--clay); text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--ink); }
+    .hamburger { display: none; flex-direction: column; gap: 4px; cursor: pointer; background: none; border: none; padding: 4px; }
+    .hamburger span { width: 22px; height: 1.5px; background: var(--ink); transition: 0.3s; }
+
+    /* HERO */
+    .hero { display: grid; grid-template-columns: 1fr 1fr; min-height: 85vh; }
+    .hero-left { display: flex; flex-direction: column; justify-content: center; padding: 5rem 4rem; }
+    .hero-tag { font-family: var(--font-body); font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.5rem; }
+    .hero-title { font-family: var(--font-display); font-size: 3.4rem; font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 1.5rem; }
+    .hero-sub { font-size: 1.05rem; color: var(--ink-soft); max-width: 480px; margin-bottom: 2.5rem; line-height: 1.8; }
+    .hero-cta { display: inline-block; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--ink); color: var(--cream); text-decoration: none; transition: background 0.3s; }
+    .hero-cta:hover { background: var(--ink-soft); }
+    .hero-right { background: var(--ink); display: flex; align-items: center; justify-content: center; padding: 4rem; }
+    .hero-quote { font-family: var(--font-display); font-size: 1.6rem; font-weight: 300; font-style: italic; color: var(--clay); line-height: 1.6; max-width: 420px; text-align: center; }
+    .hero-quote-attr { display: block; font-family: var(--font-body); font-size: 0.65rem; font-style: normal; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ink-muted); margin-top: 1.5rem; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 4rem; }
+    .section-dark { background: var(--ink); color: var(--cream); }
+    .section-sage { background: var(--sage-light); }
+    .section-tag { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
+    .section-title { font-family: var(--font-display); font-size: 2.6rem; font-weight: 300; line-height: 1.2; margin-bottom: 1.5rem; }
+    .section-dark .section-title { color: var(--cream); }
+
+    /* ABOUT */
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; max-width: 1100px; margin: 0 auto; }
+    .about-text p { margin-bottom: 1.2rem; color: var(--ink-soft); }
+    .about-list { list-style: none; }
+    .about-list li { padding: 0.8rem 0; border-bottom: 1px solid rgba(196,168,130,0.2); font-size: 0.92rem; display: flex; gap: 1rem; }
+    .about-list .label { color: var(--ink-muted); min-width: 90px; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; }
+
+    /* PILLARS */
+    .pillars-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2rem; max-width: 1100px; margin: 2rem auto 0; }
+    .pillar-card { padding: 2.5rem 1.8rem; border: 1px solid rgba(196,168,130,0.15); }
+    .section-dark .pillar-card { border-color: rgba(196,168,130,0.2); }
+    .pillar-letter { font-family: var(--font-display); font-size: 2.8rem; font-weight: 300; color: var(--clay); line-height: 1; margin-bottom: 0.5rem; }
+    .pillar-name { font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
+    .pillar-desc { font-size: 0.9rem; line-height: 1.7; color: var(--ink-muted); }
+    .section-dark .pillar-desc { color: rgba(247,244,238,0.6); }
+    .pillars-cta { text-align: center; margin-top: 3rem; }
+    .pillars-cta a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); text-decoration: none; border-bottom: 1px solid var(--clay); padding-bottom: 2px; transition: color 0.2s; }
+    .pillars-cta a:hover { color: var(--cream); }
+
+    /* PROMISE */
+    .promise { max-width: 720px; margin: 0 auto; text-align: center; }
+    .promise p { font-family: var(--font-display); font-size: 1.35rem; font-weight: 300; font-style: italic; line-height: 1.8; color: var(--ink-soft); }
+
+    /* MEMBERSHIP PREVIEW */
+    .tiers-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; max-width: 1100px; margin: 2rem auto 0; }
+    .tier-card { background: var(--white); border: 1px solid rgba(196,168,130,0.2); padding: 2.5rem 2rem; display: flex; flex-direction: column; transition: transform 0.2s, box-shadow 0.2s; }
+    .tier-card:hover { transform: translateY(-4px); box-shadow: 0 8px 30px rgba(28,26,22,0.08); }
+    .tier-card.featured { border-color: var(--clay); }
+    .tier-name { font-family: var(--font-body); font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 0.5rem; }
+    .tier-price { font-family: var(--font-display); font-size: 2.2rem; font-weight: 300; color: var(--ink); margin-bottom: 0.3rem; }
+    .tier-price span { font-size: 0.9rem; color: var(--ink-muted); }
+    .tier-tagline { font-size: 0.85rem; color: var(--ink-muted); margin-bottom: 1.5rem; padding-bottom: 1.5rem; border-bottom: 1px solid rgba(196,168,130,0.15); }
+    .tier-features { list-style: none; flex: 1; margin-bottom: 2rem; }
+    .tier-features li { font-size: 0.85rem; color: var(--ink-soft); padding: 0.4rem 0; padding-left: 1.2rem; position: relative; }
+    .tier-features li::before { content: "✓"; position: absolute; left: 0; color: var(--sage); font-size: 0.8rem; }
+    .tier-btn { display: block; text-align: center; font-family: var(--font-body); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.9rem 1.5rem; text-decoration: none; transition: 0.3s; }
+    .tier-btn-dark { background: var(--ink); color: var(--cream); }
+    .tier-btn-dark:hover { background: var(--ink-soft); }
+    .tier-btn-outline { border: 1px solid var(--ink); color: var(--ink); background: transparent; }
+    .tier-btn-outline:hover { background: var(--ink); color: var(--cream); }
+    .tiers-more { text-align: center; margin-top: 2.5rem; }
+    .tiers-more a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay-dark); text-decoration: none; border-bottom: 1px solid var(--clay); padding-bottom: 2px; }
+
+    /* BOOK */
+    .book-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .book-cover { background: var(--ink); padding: 3rem; display: flex; align-items: center; justify-content: center; min-height: 380px; }
+    .book-cover-inner { border: 1px solid var(--clay); padding: 2.5rem 2rem; text-align: center; max-width: 240px; }
+    .book-cover-title { font-family: var(--font-display); font-size: 1.3rem; font-weight: 300; color: var(--cream); line-height: 1.3; margin-bottom: 0.8rem; }
+    .book-cover-author { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); }
+    .book-text h3 { font-family: var(--font-display); font-size: 2rem; font-weight: 300; margin-bottom: 1rem; }
+    .book-text p { color: var(--ink-soft); margin-bottom: 1.2rem; }
+    .book-btns { display: flex; gap: 1rem; margin-top: 1.5rem; }
+    .book-btns a { font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; padding: 0.85rem 1.8rem; text-decoration: none; transition: 0.3s; }
+
+    /* FOUNDER */
+    .founder-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: center; max-width: 1100px; margin: 0 auto; }
+    .founder-badge { width: 140px; height: 140px; border-radius: 50%; background: var(--ink); display: flex; align-items: center; justify-content: center; margin-bottom: 1.5rem; }
+    .founder-badge span { font-family: var(--font-display); font-size: 2rem; font-weight: 300; color: var(--clay); }
+    .founder-name { font-family: var(--font-display); font-size: 2rem; font-weight: 300; margin-bottom: 0.5rem; }
+    .founder-role { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.5rem; }
+    .founder-text p { color: var(--ink-soft); margin-bottom: 1rem; }
+
+    /* CTA STRIP */
+    .cta-strip { background: var(--ink); padding: 5rem 4rem; text-align: center; }
+    .cta-strip h2 { font-family: var(--font-display); font-size: 2.4rem; font-weight: 300; color: var(--cream); margin-bottom: 1rem; }
+    .cta-strip p { color: var(--ink-muted); margin-bottom: 2rem; font-size: 1rem; }
+    .cta-strip a { display: inline-block; font-family: var(--font-body); font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 1rem 2.5rem; background: var(--clay); color: var(--ink); text-decoration: none; transition: background 0.3s; }
+    .cta-strip a:hover { background: var(--clay-dark); }
+
+    /* FOOTER */
+    footer { background: var(--ink); border-top: 1px solid rgba(196,168,130,0.1); padding: 3rem 4rem 2rem; }
+    .footer-grid { display: grid; grid-template-columns: 1.5fr repeat(3, 1fr); gap: 3rem; max-width: 1100px; margin: 0 auto 2rem; }
+    .footer-brand .nav-logo-round { color: var(--cream); }
+    .footer-brand .nav-logo-the, .footer-brand .nav-logo-sub { color: var(--ink-muted); }
+    .footer-brand p { color: var(--ink-muted); font-size: 0.82rem; margin-top: 1rem; max-width: 260px; }
+    .footer-col h4 { font-family: var(--font-body); font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; }
+    .footer-col a { display: block; font-size: 0.82rem; color: var(--ink-muted); text-decoration: none; padding: 0.3rem 0; transition: color 0.2s; }
+    .footer-col a:hover { color: var(--cream); }
+    .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(196,168,130,0.1); color: var(--ink-muted); font-size: 0.72rem; }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: var(--cream); padding: 1.5rem; gap: 1.2rem; border-bottom: 1px solid rgba(196,168,130,0.2); }
+      .nav-links.open { display: flex; }
+      .hamburger { display: flex; }
+      .hero { grid-template-columns: 1fr; }
+      .hero-left { padding: 3rem 1.5rem; }
+      .hero-title { font-size: 2.4rem; }
+      .hero-right { padding: 3rem 1.5rem; min-height: 300px; }
+      .section { padding: 3.5rem 1.5rem; }
+      .about-grid, .book-grid, .founder-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .pillars-grid { grid-template-columns: 1fr 1fr; }
+      .tiers-grid { grid-template-columns: 1fr; max-width: 420px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .section-title { font-size: 2rem; }
+    }
+    @media (max-width: 600px) {
+      .pillars-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .book-btns { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="nav-logo">
+    <span class="nav-logo-the">The</span>
+    <span class="nav-logo-round">ROUND</span>
+    <span class="nav-logo-rule"></span>
+    <span class="nav-logo-sub">C.O.R.E Think</span>
+  </a>
+  <button class="hamburger" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <ul class="nav-links">
+    <li><a href="index.html#about">About</a></li>
+    <li><a href="pillars.html">Pillars</a></li>
+    <li><a href="membership.html">Membership</a></li>
+    <li><a href="stewardship.html">Stewardship</a></li>
+    <li><a href="book.html">The Book</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-left">
+    <p class="hero-tag">Compassion · Open Faith · Reverence · Empathy</p>
+    <h1 class="hero-title">Where healing<br>becomes habit</h1>
+    <p class="hero-sub">The Round is a practice-based community built on four pillars. We call it C.O.R.E Think — a spiritual way of living designed to turn healing into habit, and habit into culture.</p>
+    <a href="membership.html" class="hero-cta">Join The Round</a>
+  </div>
+  <div class="hero-right">
+    <p class="hero-quote">"Nothing is final until you're dead. And even then, I'm sure God negotiates."
+      <span class="hero-quote-attr">— A.L. Lindsey</span>
+    </p>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="section" id="about">
+  <div class="about-grid">
+    <div class="about-text">
+      <p class="section-tag">About The Round</p>
+      <h2 class="section-title">The circle is the point</h2>
+      <p>We gather in circles because circles train equality: no one sits at the head of the table — only shared dignity and shared responsibility.</p>
+      <p>The Round is a way of life and community made up of C.O.R.E Companions who follow C.O.R.E Circle thinking — a spiritual way of living built on Compassion, Open Faith, Reverence, and Empathy.</p>
+      <p>We believe people are unfinished, that mercy is accuracy, and that identity grows through practice — not just intention.</p>
+    </div>
+    <div>
+      <ul class="about-list">
+        <li><span class="label">Not</span> A church or denomination</li>
+        <li><span class="label">Yes</span> A spiritual community with Open Faith</li>
+        <li><span class="label">Not</span> Therapy or clinical treatment</li>
+        <li><span class="label">Yes</span> Structured practice with trained facilitation</li>
+        <li><span class="label">Not</span> A course you finish</li>
+        <li><span class="label">Yes</span> A way of life you keep practicing</li>
+        <li><span class="label">Not</span> Performance-based belonging</li>
+        <li><span class="label">Yes</span> Evidence-based growth, no perfection required</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- PILLARS -->
+<section class="section section-dark">
+  <div style="text-align:center; max-width:700px; margin:0 auto 1rem;">
+    <p class="section-tag">The Four Pillars</p>
+    <h2 class="section-title">C.O.R.E</h2>
+  </div>
+  <div class="pillars-grid">
+    <div class="pillar-card">
+      <div class="pillar-letter">C</div>
+      <div class="pillar-name">Compassion</div>
+      <p class="pillar-desc">Truth with warmth. Repair without humiliation. Standards stay; cruelty goes.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-letter">O</div>
+      <div class="pillar-name">Open Faith</div>
+      <p class="pillar-desc">Freedom of conscience. Curiosity without coercion. Belonging without doctrinal gatekeeping.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-letter">R</div>
+      <div class="pillar-name">Reverence</div>
+      <p class="pillar-desc">Sacred dignity for every person — especially in disagreement.</p>
+    </div>
+    <div class="pillar-card">
+      <div class="pillar-letter">E</div>
+      <div class="pillar-name">Empathy</div>
+      <p class="pillar-desc">Listening that changes behavior. Connection that becomes action.</p>
+    </div>
+  </div>
+  <div class="pillars-cta">
+    <a href="pillars.html">Explore the pillars in depth →</a>
+  </div>
+</section>
+
+<!-- PROMISE -->
+<section class="section section-sage">
+  <div class="promise">
+    <p class="section-tag" style="text-align:center;">The Companion's Promise</p>
+    <p>"As a C.O.R.E Companion, I practice compassion without denial, I keep faith open, I treat dignity as sacred, and I train empathy into my choices. I refuse premature verdicts — about myself or anyone else."</p>
+  </div>
+</section>
+
+<!-- MEMBERSHIP PREVIEW -->
+<section class="section">
+  <div style="text-align:center; max-width:700px; margin:0 auto 1rem;">
+    <p class="section-tag">Become a Companion</p>
+    <h2 class="section-title">Choose your path</h2>
+    <p style="color:var(--ink-muted); margin-bottom:1rem;">Now open — founding member pricing available for a limited time.</p>
+  </div>
+  <div class="tiers-grid">
+    <div class="tier-card">
+      <div class="tier-name">C.O.R.E Companion</div>
+      <div class="tier-price">$19<span>/month</span></div>
+      <div class="tier-tagline">Practice + prompts</div>
+      <ul class="tier-features">
+        <li>Daily 10 prompts (C.O.R.E)</li>
+        <li>Weekly Revision Ritual guide</li>
+        <li>Monthly 30-Day Focus plans</li>
+        <li>C.O.R.E Baseline measurement</li>
+        <li>Resource library</li>
+      </ul>
+      <a href="membership.html" class="tier-btn tier-btn-outline">Learn More</a>
+    </div>
+    <div class="tier-card featured">
+      <div class="tier-name">Ember Companion</div>
+      <div class="tier-price">$49<span>/month</span></div>
+      <div class="tier-tagline">Practice + people</div>
+      <ul class="tier-features">
+        <li>Everything in Companion</li>
+        <li>Weekly Circle (small group)</li>
+        <li>Trained C.O.R.E Steward facilitation</li>
+        <li>Live monthly teaching + Q&A</li>
+      </ul>
+      <a href="membership.html" class="tier-btn tier-btn-dark">Learn More</a>
+    </div>
+    <div class="tier-card">
+      <div class="tier-name">Diamond Companion</div>
+      <div class="tier-price">$129<span>/month</span></div>
+      <div class="tier-tagline">Practice + guided transformation</div>
+      <ul class="tier-features">
+        <li>Everything in Ember</li>
+        <li>Guided transformation track</li>
+        <li>1:1 mentor call (monthly)</li>
+        <li>Priority support</li>
+      </ul>
+      <a href="membership.html" class="tier-btn tier-btn-outline">Learn More</a>
+    </div>
+  </div>
+  <div class="tiers-more">
+    <a href="membership.html">See all tiers including Stewardship & Eclipse →</a>
+  </div>
+</section>
+
+<!-- BOOK -->
+<section class="section section-sage" id="book">
+  <div class="book-grid">
+    <div class="book-cover">
+      <div class="book-cover-inner">
+        <div class="book-cover-title">Nothing Is Final Until You're Dead<br><em style="font-size:0.9rem; color:var(--clay);">(And Even Then, I'm Sure God Negotiates)</em></div>
+        <div class="book-cover-author">A.L. Lindsey</div>
+      </div>
+    </div>
+    <div class="book-text">
+      <p class="section-tag">The Book</p>
+      <h3>The philosophy behind The Round</h3>
+      <p>A book built around a simple philosophy: as long as you're alive, there is room. Room to learn. Room to repair. Room to reinterpret. Room to begin again without calling it failure.</p>
+      <p>Every chapter includes Field Notes and exercises, because ideas should be lived, not admired.</p>
+      <div class="book-btns">
+        <a href="book.html" class="tier-btn tier-btn-outline">Read More</a>
+        <a href="https://square.link/u/oJ6zjogh" class="tier-btn tier-btn-dark" target="_blank" rel="noopener">Buy the Book</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOUNDER -->
+<section class="section" id="founder">
+  <div class="founder-grid">
+    <div>
+      <div class="founder-badge"><span>AL</span></div>
+      <h3 class="founder-name">A.L. Lindsey</h3>
+      <p class="founder-role">Founder of The Round</p>
+    </div>
+    <div class="founder-text">
+      <p>A.L. Lindsey grew up in a military family, did ROTC, and joined the Army. He deployed in support of Operation Iraqi Freedom and Operation New Dawn, working in logistics and accountability — systems where details matter because consequences are real.</p>
+      <p>That experience taught him something he didn't expect to learn so personally: you can live a chapter that shapes you and still not be defined by it forever.</p>
+      <p>The Round grew from a simple conviction: people are unfinished, mercy is accuracy, and identity grows through practice — not just intention. C.O.R.E Think is designed to be repeatable, measurable, and deeply human.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="cta-strip">
+  <h2>Join The Round</h2>
+  <p>Grow through practice, not perfection.</p>
+  <a href="membership.html">Become a Companion</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-grid">
+    <div class="footer-brand">
+      <div class="nav-logo" style="pointer-events:none;">
+        <span class="nav-logo-the">The</span>
+        <span class="nav-logo-round">ROUND</span>
+        <span class="nav-logo-rule"></span>
+        <span class="nav-logo-sub">C.O.R.E Think</span>
+      </div>
+      <p>A practice-based community built on Compassion, Open Faith, Reverence, and Empathy.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Community</h4>
+      <a href="index.html#about">About</a>
+      <a href="pillars.html">Pillars</a>
+      <a href="membership.html">Membership</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-col">
+      <h4>Leadership</h4>
+      <a href="stewardship.html">Stewardship</a>
+      <a href="book.html">The Book</a>
+    </div>
+    <div class="footer-col">
+      <h4>Start Here</h4>
+      <a href="membership.html">Join The Round</a>
+      <a href="https://square.link/u/oJ6zjogh" target="_blank" rel="noopener">Get the Book</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    &copy; 2025 The Round — C.O.R.E Think Community. All rights reserved.
+  </div>
+</footer>
+
+</body>
+</html>
