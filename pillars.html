@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Four Pillars — The Round</title>
+  <meta name="description" content="Compassion, Open Faith, Reverence, and Empathy — four disciplines that turn values into a way of life." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --cream: #F7F4EE; --cream-dark: #EDE8DC; --clay: #C4A882; --clay-dark: #9E7F58;
+      --ink: #1C1A16; --ink-soft: #3D3A33; --ink-muted: #7A7469; --sage: #6B7B6A;
+      --sage-light: #E8EDE7; --ember: #B5522A; --gold: #C8A84B; --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Jost', sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--cream); color: var(--ink); font-weight: 300; font-size: 16px; line-height: 1.7; -webkit-font-smoothing: antialiased; }
+    nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 4rem; background: rgba(247,244,238,0.96); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(196,168,130,0.2); }
+    .nav-logo { text-decoration: none; display: flex; flex-direction: column; line-height: 1; }
+    .nav-logo-the { font-family: var(--font-body); font-size: 0.48rem; font-weight: 300; letter-spacing: 0.42em; color: var(--ink-muted); text-transform: uppercase; display: block; margin-bottom: 2px; }
+    .nav-logo-round { font-family: var(--font-display); font-size: 1.25rem; font-weight: 300; letter-spacing: 0.12em; color: var(--ink); text-transform: uppercase; line-height: 1; display: block; }
+    .nav-logo-rule { height: 1px; background: var(--clay); width: 100%; margin: 2px 0; display: block; }
+    .nav-logo-sub { font-family: var(--font-body); font-size: 0.38rem; font-weight: 300; letter-spacing: 0.2em; color: var(--clay); text-transform: uppercase; display: block; }
+    .nav-links { display: flex; align-items: center; gap: 2.25rem; list-style: none; }
+    .nav-links a { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--ink); }
+    .nav-links a.active { border-bottom: 1px solid var(--clay); padding-bottom: 1px; }
+    .nav-cta { color: var(--white) !important; background: var(--ink); padding: 0.55rem 1.35rem; border-radius: 2px; transition: background 0.2s !important; border-bottom: none !important; }
+    .nav-cta:hover { background: var(--ember) !important; }
+    .btn-primary { font-family: var(--font-body); font-size: 0.75rem; font-weight: 400; letter-spacing: 0.12em; text-transform: uppercase; color: var(--white); background: var(--ink); padding: 0.9rem 2.25rem; border-radius: 2px; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+    .btn-primary:hover { background: var(--ember); transform: translateY(-1px); }
+    .btn-ghost { font-family: var(--font-body); font-size: 0.72rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-muted); text-decoration: none; border-bottom: 1px solid var(--clay); padding-bottom: 2px; transition: color 0.2s; }
+    .btn-ghost:hover { color: var(--ink); }
+
+    /* HERO */
+    .page-hero { background: var(--ink); padding: 6rem 4rem; display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .eyebrow { font-size: 0.65rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--clay); margin-bottom: 1rem; font-family: var(--font-body); }
+    .hero-title { font-family: var(--font-display); font-size: clamp(3rem, 5vw, 5rem); font-weight: 300; line-height: 1.05; color: var(--cream); margin-bottom: 1.5rem; }
+    .hero-title em { font-style: italic; color: var(--clay); }
+    .hero-body { font-size: 1rem; font-weight: 300; color: rgba(247,244,238,0.6); line-height: 1.85; }
+    .core-letters { display: flex; gap: 1.5rem; }
+    .core-letter { font-family: var(--font-display); font-size: 5rem; font-weight: 300; color: rgba(196,168,130,0.25); line-height: 1; }
+
+    /* PILLAR SECTIONS */
+    .pillar-section { padding: 5rem 4rem; border-bottom: 1px solid rgba(196,168,130,0.2); }
+    .pillar-section:nth-child(even) { background: var(--cream-dark); }
+    .pillar-layout { display: grid; grid-template-columns: 200px 1fr; gap: 5rem; align-items: start; }
+    .pillar-big-letter { font-family: var(--font-display); font-size: 9rem; font-weight: 300; color: rgba(196,168,130,0.2); line-height: 0.85; }
+    .pillar-label { font-size: 0.62rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); font-family: var(--font-body); margin-bottom: 0.4rem; }
+    .pillar-name { font-family: var(--font-display); font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 300; color: var(--ink); line-height: 1.1; margin-bottom: 0.4rem; }
+    .pillar-tagline { font-family: var(--font-display); font-size: 1.1rem; font-weight: 300; font-style: italic; color: var(--clay-dark); margin-bottom: 2rem; }
+    .pillar-body { font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.9; max-width: 580px; margin-bottom: 1.25rem; }
+    .practice-list { list-style: none; margin-top: 2rem; }
+    .practice-list li { display: flex; gap: 1rem; align-items: flex-start; padding: 0.85rem 0; border-bottom: 1px solid rgba(196,168,130,0.18); font-size: 0.9rem; font-weight: 300; color: var(--ink-soft); line-height: 1.6; }
+    .practice-list li:first-child { border-top: 1px solid rgba(196,168,130,0.18); }
+    .practice-list li::before { content: '—'; color: var(--clay); flex-shrink: 0; font-size: 0.8rem; margin-top: 3px; }
+    .practice-label { font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); font-family: var(--font-body); margin-bottom: 1rem; margin-top: 2rem; }
+
+    /* RULE OF LIFE */
+    .rule-section { background: var(--ink); padding: 5rem 4rem; }
+    .rule-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 2rem; margin-top: 3rem; }
+    .rule-card { background: rgba(247,244,238,0.04); border: 1px solid rgba(196,168,130,0.12); border-radius: 2px; padding: 2rem 1.75rem; }
+    .rule-time { font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--clay); font-family: var(--font-body); margin-bottom: 0.5rem; }
+    .rule-pillar { font-family: var(--font-display); font-size: 1.3rem; font-weight: 300; color: var(--cream); margin-bottom: 0.75rem; }
+    .rule-body { font-size: 0.82rem; font-weight: 300; color: rgba(247,244,238,0.55); line-height: 1.7; }
+
+    /* PROMISE */
+    .promise { background: var(--sage-light); padding: 5rem 4rem; }
+    .promise-text { font-family: var(--font-display); font-size: clamp(1.2rem, 2vw, 1.65rem); font-weight: 300; font-style: italic; color: var(--ink); line-height: 1.65; max-width: 760px; margin-bottom: 1.25rem; }
+    .promise-attr { font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--sage); font-family: var(--font-body); }
+
+    /* CTA */
+    .cta-strip { background: var(--cream-dark); padding: 5rem 4rem; text-align: center; }
+    .section-title { font-family: var(--font-display); font-size: clamp(1.9rem, 3vw, 2.8rem); font-weight: 300; color: var(--ink); line-height: 1.2; margin-bottom: 1.25rem; }
+    .section-title em { font-style: italic; color: var(--clay-dark); }
+    .section-body { font-size: 0.95rem; font-weight: 300; color: var(--ink-soft); line-height: 1.85; max-width: 560px; }
+    .cta-actions { display: flex; gap: 1.25rem; justify-content: center; align-items: center; flex-wrap: wrap; margin-top: 2.5rem; }
+
+    footer { background: var(--ink); padding: 4rem; display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 3rem; }
+    .footer-wordmark-the { font-family: var(--font-body); font-size: 0.42rem; font-weight: 300; letter-spacing: 0.38em; color: rgba(247,244,238,0.35); text-transform: uppercase; display: block; margin-bottom: 2px; }
+    .footer-wordmark-round { font-family: var(--font-display); font-size: 1.5rem; font-weight: 300; letter-spacing: 0.12em; color: var(--cream); text-transform: uppercase; line-height: 1; display: block; }
+    .footer-wordmark-rule { height: 1px; background: var(--clay); width: 70px; margin: 5px 0 4px; display: block; opacity: 0.5; }
+    .footer-wordmark-sub { font-family: var(--font-body); font-size: 0.4rem; font-weight: 300; letter-spacing: 0.2em; color: var(--clay); text-transform: uppercase; display: block; }
+    .footer-tagline { font-size: 0.8rem; font-weight: 300; color: rgba(247,244,238,0.35); line-height: 1.7; max-width: 260px; margin-top: 1.25rem; }
+    .footer-col-heading { font-size: 0.58rem; font-weight: 500; letter-spacing: 0.18em; text-transform: uppercase; color: var(--clay); margin-bottom: 1.1rem; font-family: var(--font-body); }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.55rem; }
+    .footer-links a { font-size: 0.8rem; font-weight: 300; color: rgba(247,244,238,0.45); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--clay); }
+    .footer-bottom { background: var(--ink); padding: 1.5rem 4rem; border-top: 1px solid rgba(196,168,130,0.1); display: flex; justify-content: space-between; align-items: center; }
+    .footer-bottom p { font-size: 0.68rem; font-weight: 300; color: rgba(247,244,238,0.25); letter-spacing: 0.04em; }
+    .fade-in { opacity: 0; transform: translateY(16px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+    @media (max-width: 900px) {
+      nav { padding: 1rem 1.5rem; } .nav-links { display: none; }
+      .page-hero { grid-template-columns: 1fr; padding: 3.5rem 1.5rem; gap: 2rem; }
+      .pillar-section, .rule-section, .promise, .cta-strip { padding: 3.5rem 1.5rem; }
+      .pillar-layout { grid-template-columns: 1fr; gap: 1rem; }
+      .pillar-big-letter { font-size: 6rem; }
+      .rule-grid { grid-template-columns: 1fr 1fr; }
+      footer { grid-template-columns: 1fr; padding: 3rem 1.5rem; gap: 2rem; }
+      .footer-bottom { flex-direction: column; gap: 0.5rem; padding: 1.5rem; text-align: center; }
+      .cta-actions { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="../index.html" class="nav-logo">
+    <span class="nav-logo-the">T &nbsp; H &nbsp; E</span>
+    <span class="nav-logo-round">Round</span>
+    <span class="nav-logo-rule"></span>
+    <span class="nav-logo-sub">C · O · R · E</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="../index.html#about">About</a></li>
+    <li><a href="../pillars/pillars.html" class="active">Pillars</a></li>
+    <li><a href="../membership/membership.html">Membership</a></li>
+    <li><a href="../stewardship/stewardship.html">Stewardship</a></li>
+    <li><a href="../book/book.html">The Book</a></li>
+    <li><a href="../membership/membership.html" class="nav-cta">Join The Round</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div>
+    <p class="eyebrow">The Four Pillars</p>
+    <h1 class="hero-title">Not values to <em>declare</em> — skills to practice</h1>
+    <p class="hero-body">C.O.R.E is not a creed. It is a framework for becoming — four disciplines that show up differently depending on the day, and grow deeper depending on the commitment. Each pillar is a practice, not a belief. You do not have to agree with anyone to begin.</p>
+  </div>
+  <div class="core-letters">
+    <span class="core-letter">C</span>
+    <span class="core-letter">O</span>
+    <span class="core-letter">R</span>
+    <span class="core-letter">E</span>
+  </div>
+</div>
+
+<!-- COMPASSION -->
+<div class="pillar-section fade-in" id="compassion">
+  <div class="pillar-layout">
+    <div><p class="pillar-big-letter">C</p></div>
+    <div>
+      <p class="pillar-label">First Pillar</p>
+      <h2 class="pillar-name">Compassion</h2>
+      <p class="pillar-tagline">Truth with warmth. Standards stay. Cruelty goes.</p>
+      <p class="pillar-body">Compassion is not softness. It is the refusal to add humiliation to consequence. Standards remain — you still hold yourself and others to account. What changes is the tone. Correction without contempt. Honesty without cruelty.</p>
+      <p class="pillar-body">The inner voice that calls you worthless when you fail is not accountability. It is punishment. Compassion draws the line between the two — and insists on repair instead of self-destruction.</p>
+      <p class="practice-label">What this looks like in practice</p>
+      <ul class="practice-list">
+        <li>Naming what happened without editing or exaggerating it</li>
+        <li>Holding yourself accountable without sliding into shame</li>
+        <li>Correcting others with clarity — not contempt</li>
+        <li>Choosing repair over self-punishment when you fall short</li>
+        <li>Speaking to yourself the way you would speak to someone you respect</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- OPEN FAITH -->
+<div class="pillar-section fade-in" id="openfaith">
+  <div class="pillar-layout">
+    <div><p class="pillar-big-letter">O</p></div>
+    <div>
+      <p class="pillar-label">Second Pillar</p>
+      <h2 class="pillar-name">Open Faith</h2>
+      <p class="pillar-tagline">Freedom of conscience with curiosity. No coercion.</p>
+      <p class="pillar-body">Open Faith means that your spiritual life — or the absence of one — belongs entirely to you. The Round does not require belief, does not reward performance, and does not punish doubt. Devout, skeptical, or undecided: all belong here without pressure to become something else.</p>
+      <p class="pillar-body">It also means holding your own convictions without needing to impose them. You can be certain about what you believe and still leave room for someone else to believe differently. That is not compromise — that is dignity.</p>
+      <p class="practice-label">What this looks like in practice</p>
+      <ul class="practice-list">
+        <li>Replacing verdict thoughts with open sentences — "I haven't learned this yet" instead of "I never will"</li>
+        <li>Holding uncertainty without panic or control</li>
+        <li>Disagreeing with someone without contempt</li>
+        <li>Allowing others their spiritual path without pressure or recruitment</li>
+        <li>Staying grounded in your values without using them as a weapon</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- REVERENCE -->
+<div class="pillar-section fade-in" id="reverence">
+  <div class="pillar-layout">
+    <div><p class="pillar-big-letter">R</p></div>
+    <div>
+      <p class="pillar-label">Third Pillar</p>
+      <h2 class="pillar-name">Reverence</h2>
+      <p class="pillar-tagline">Sacred dignity for every person — especially in disagreement.</p>
+      <p class="pillar-body">Reverence is the practice of treating every person — including yourself — as someone whose dignity is non-negotiable. Not because they have earned it, but because it is not yours to revoke. You speak about people as if they are in the room. You do not reduce a whole human to their worst moment.</p>
+      <p class="pillar-body">This is hardest in disagreement. Reverence does not mean agreeing. It means keeping the other person's humanity intact even when you oppose what they believe or how they behaved.</p>
+      <p class="practice-label">What this looks like in practice</p>
+      <ul class="practice-list">
+        <li>Speaking about people the same way whether or not they are present</li>
+        <li>Refusing to reduce someone to a single mistake, label, or belief</li>
+        <li>Treating your own body, time, and attention as worthy of care</li>
+        <li>Setting one daily intention that honors dignity — yours and others'</li>
+        <li>Resisting the urge to dehumanize even when you are angry</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- EMPATHY -->
+<div class="pillar-section fade-in" id="empathy">
+  <div class="pillar-layout">
+    <div><p class="pillar-big-letter">E</p></div>
+    <div>
+      <p class="pillar-label">Fourth Pillar</p>
+      <h2 class="pillar-name">Empathy</h2>
+      <p class="pillar-tagline">Listening that changes behavior. Connection that becomes action.</p>
+      <p class="pillar-body">Empathy is not agreement. It is not the same as approval. It is the ability to understand what someone else is experiencing well enough to respond to it — and then to actually respond. The listening matters. The action that follows matters more.</p>
+      <p class="pillar-body">In The Round, empathy is practiced as a daily discipline: one meaningful check-in, one tangible act of support. Not a feeling you wait to have — a behavior you choose to build.</p>
+      <p class="practice-label">What this looks like in practice</p>
+      <ul class="practice-list">
+        <li>Listening to understand — not to fix, win, or wait for your turn</li>
+        <li>Naming what someone might be feeling without claiming you know everything</li>
+        <li>Following understanding with one tangible action — a check-in, support, advocacy</li>
+        <li>Choosing one meaningful connection each day, however small</li>
+        <li>Distinguishing between empathy (understanding) and agreement (approval)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- RULE OF LIFE -->
+<div class="rule-section fade-in">
+  <div style="max-width:600px;margin-bottom:0;">
+    <p class="eyebrow" style="color:var(--clay);">The Daily Practice</p>
+    <h2 class="section-title" style="color:var(--cream);">Ten minutes. <em>Four pillars.</em></h2>
+    <p class="section-body" style="color:rgba(247,244,238,0.55);">The C.O.R.E Rule of Life gives each pillar a daily window. Two minutes each. The bad-day version counts as much as the good-day version.</p>
+  </div>
+  <div class="rule-grid">
+    <div class="rule-card">
+      <p class="rule-time">2 min · Compassion</p>
+      <p class="rule-pillar">Name the truth</p>
+      <p class="rule-body">Choose the next right repair. No self-attack. No denial. Just honesty and a next step.</p>
+    </div>
+    <div class="rule-card">
+      <p class="rule-time">2 min · Open Faith</p>
+      <p class="rule-pillar">Rewrite one verdict</p>
+      <p class="rule-body">Replace one closed sentence about yourself or someone else with an open one.</p>
+    </div>
+    <div class="rule-card">
+      <p class="rule-time">3 min · Reverence</p>
+      <p class="rule-pillar">Set one intention</p>
+      <p class="rule-body">One intention that honors dignity today — yours, and at least one other person's.</p>
+    </div>
+    <div class="rule-card">
+      <p class="rule-time">3 min · Empathy</p>
+      <p class="rule-pillar">One check-in</p>
+      <p class="rule-body">One meaningful connection — a text, a call, a voice note. Then one small act of support.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PROMISE -->
+<div class="promise fade-in">
+  <p class="promise-text">"As a C.O.R.E Companion, I practice compassion without denial, I keep faith open, I treat dignity as sacred, and I train empathy into my choices. I refuse premature verdicts — about myself or anyone else."</p>
+  <p class="promise-attr">The Companion's Promise</p>
+</div>
+
+<!-- CTA -->
+<div class="cta-strip fade-in">
+  <p class="eyebrow" style="text-align:center;">Begin</p>
+  <h2 class="section-title" style="text-align:center;max-width:560px;margin:0 auto 1rem;">Ready to practice, <em>not just understand?</em></h2>
+  <p class="section-body" style="text-align:center;margin:0 auto;">Join The Round and build evidence across all four pillars — daily, weekly, and monthly.</p>
+  <div class="cta-actions">
+    <a href="../membership/membership.html" class="btn-primary">Join The Round</a>
+    <a href="../membership/membership.html" class="btn-ghost">See membership tiers</a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <span class="footer-wordmark-the">T &nbsp; H &nbsp; E</span>
+    <span class="footer-wordmark-round">Round</span>
+    <span class="footer-wordmark-rule"></span>
+    <span class="footer-wordmark-sub">C · O · R · E</span>
+    <p class="footer-tagline">A practice-based community built on Compassion, Open Faith, Reverence, and Empathy.</p>
+  </div>
+  <div>
+    <p class="footer-col-heading">Community</p>
+    <ul class="footer-links">
+      <li><a href="../index.html#about">About</a></li>
+      <li><a href="../pillars/pillars.html">The Four Pillars</a></li>
+      <li><a href="../stewardship/stewardship.html">Stewardship</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-heading">Practice</p>
+    <ul class="footer-links">
+      <li><a href="../membership/membership.html">Join The Round</a></li>
+      <li><a href="../checkout/checkout.html">Full Pricing</a></li>
+      <li><a href="../book/book.html">The Book</a></li>
+    </ul>
+  </div>
+  <div>
+    <p class="footer-col-heading">Connect</p>
+    <ul class="footer-links">
+      <li><a href="../contact/contact.html">Contact Us</a></li>
+      <li><a href="../stewardship/stewardship.html">Apply for Stewardship</a></li>
+      <li><a href="mailto:hello@corethink.org">hello@corethink.org</a></li>
+    </ul>
+  </div>
+</footer>
+<div class="footer-bottom">
+  <p>© 2026 The Round · C.O.R.E Think Community · All rights reserved.</p>
+  <p>hello@corethink.org</p>
+</div>
+
+<script>
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

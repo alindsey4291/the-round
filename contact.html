@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact — The Round</title>
+  <link rel="stylesheet" href="../style.css" />
+  <style>
+    .contact-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: start; }
+    .contact-option { padding: 1.75rem 0; border-bottom: 1px solid rgba(196,168,130,0.2); }
+    .contact-option:first-child { border-top: 1px solid rgba(196,168,130,0.2); }
+    .contact-option-label { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--clay); font-family: var(--font-body); margin-bottom: 0.4rem; }
+    .contact-option-title { font-family: var(--font-display); font-size: 1.2rem; font-weight: 300; color: var(--ink); margin-bottom: 0.3rem; }
+    .contact-option-body { font-size: 0.85rem; font-weight: 300; color: var(--ink-muted); line-height: 1.65; margin-bottom: 0.75rem; }
+    .contact-option a { font-size: 0.68rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--clay-dark); text-decoration: none; border-bottom: 1px solid rgba(196,168,130,0.3); padding-bottom: 1px; transition: color 0.2s; font-family: var(--font-body); }
+    .contact-option a:hover { color: var(--ink); }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-label { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-muted); font-family: var(--font-body); display: block; margin-bottom: 0.4rem; }
+    .form-input { width: 100%; font-family: var(--font-body); font-size: 0.9rem; font-weight: 300; color: var(--ink); background: var(--white); border: 1px solid rgba(196,168,130,0.3); border-radius: 2px; padding: 0.75rem 1rem; transition: border-color 0.2s; }
+    .form-input:focus { outline: none; border-color: var(--clay); }
+    textarea.form-input { resize: vertical; min-height: 120px; }
+    select.form-input { cursor: pointer; }
+    @media (max-width: 900px) { .contact-layout { grid-template-columns: 1fr; gap: 3rem; } }
+  </style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nav-logo"><span class="nav-logo-the">T &nbsp; H &nbsp; E</span><span class="nav-logo-round">Round</span><span class="nav-logo-rule"></span><span class="nav-logo-sub">C · O · R · E</span></a>
+  <ul class="nav-links">
+    <li><a href="../about/index.html">About</a></li>
+    <li><a href="../membership/membership.html">Membership</a></li>
+    <li><a href="../stewardship/stewardship.html">Stewardship</a></li>
+    <li><a href="../book/book.html">The Book</a></li>
+    <li><a href="../contact/contact.html" class="active">Contact</a></li>
+    <li><a href="../portal/index.html">Login</a></li>
+    <li><a href="../membership/membership.html" class="nav-cta">Join</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-left">
+    <p class="page-eyebrow">Contact</p>
+    <h1 class="page-title">Get in <em>touch</em></h1>
+  </div>
+  <p class="page-intro">Every message is read by a real person. We aim to respond within one business day.</p>
+</div>
+
+<div class="container">
+  <div class="section contact-layout">
+    <div>
+      <p class="section-label">Ways to reach us</p>
+      <div class="contact-option">
+        <p class="contact-option-label">General</p>
+        <p class="contact-option-title">Questions about The Round</p>
+        <p class="contact-option-body">Membership, practice, Circles, or anything else — send us a message and we'll get back to you.</p>
+        <a href="mailto:hello@corethink.org">hello@corethink.org</a>
+      </div>
+      <div class="contact-option">
+        <p class="contact-option-label">Membership support</p>
+        <p class="contact-option-title">Help with your account</p>
+        <p class="contact-option-body">Billing questions, portal access, or tier changes — we're here to help.</p>
+        <a href="mailto:hello@corethink.org">hello@corethink.org</a>
+      </div>
+      <div class="contact-option">
+        <p class="contact-option-label">Stewardship</p>
+        <p class="contact-option-title">Apply to become a Steward</p>
+        <p class="contact-option-body">Interested in leading Circles? Read about Stewardship first, then reach out.</p>
+        <a href="../stewardship/stewardship.html">Learn about Stewardship →</a>
+      </div>
+      <div class="contact-option">
+        <p class="contact-option-label">Media + partnerships</p>
+        <p class="contact-option-title">Press, speaking, or collaboration</p>
+        <p class="contact-option-body">For interview requests, speaking engagements, or organizational partnerships.</p>
+        <a href="mailto:hello@corethink.org">hello@corethink.org</a>
+      </div>
+    </div>
+
+    <div>
+      <p class="section-label">Send a message</p>
+      <h2 class="section-heading" style="margin-bottom:2rem;">We'd love to <em>hear from you</em></h2>
+      <!-- Replace action with your form handler (Formspree, Netlify Forms, etc.) -->
+      <form action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <div class="form-group">
+          <label class="form-label" for="name">Your name</label>
+          <input class="form-input" type="text" id="name" name="name" placeholder="First and last name" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="email">Email address</label>
+          <input class="form-input" type="email" id="email" name="email" placeholder="you@example.com" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="reason">Reason for reaching out</label>
+          <select class="form-input" id="reason" name="reason">
+            <option value="">Select one</option>
+            <option value="membership">Membership question</option>
+            <option value="stewardship">Stewardship inquiry</option>
+            <option value="circle">Finding a Circle</option>
+            <option value="book">The Book</option>
+            <option value="media">Media or partnership</option>
+            <option value="other">Something else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="message">Message</label>
+          <textarea class="form-input" id="message" name="message" placeholder="Tell us what's on your mind…" required></textarea>
+        </div>
+        <button type="submit" class="btn btn-dark" style="width:100%;text-align:center;">Send message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div><span class="footer-wordmark-the">T &nbsp; H &nbsp; E</span><span class="footer-wordmark-round">Round</span><span class="footer-wordmark-rule"></span><span class="footer-wordmark-sub">C · O · R · E</span><p class="footer-tagline">A practice-based community built on Compassion, Open Faith, Reverence, and Empathy.</p></div>
+    <div><p class="footer-col-heading">Community</p><ul class="footer-col-links"><li><a href="../about/index.html">About</a></li><li><a href="../membership/membership.html">Membership</a></li><li><a href="../stewardship/stewardship.html">Stewardship</a></li></ul></div>
+    <div><p class="footer-col-heading">Practice</p><ul class="footer-col-links"><li><a href="../membership/membership.html">Join The Round</a></li><li><a href="../portal/index.html">Member Portal</a></li><li><a href="../book/book.html">The Book</a></li></ul></div>
+    <div><p class="footer-col-heading">Connect</p><ul class="footer-col-links"><li><a href="../contact/contact.html">Contact</a></li><li><a href="mailto:hello@corethink.org">hello@corethink.org</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 The Round · C.O.R.E Think Community · All rights reserved.</p><p>hello@corethink.org</p></div>
+</footer>
+</body>
+</html>
